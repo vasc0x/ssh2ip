@@ -5,20 +5,6 @@ body {
     background: #fff;
 }
 
-#status {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    width: 330px;
-    height: 100px;
-    transition: opacity .5s ease .1s;
-}
-
-#status.is-active {
-    opacity: 1;
-}
-
 h1 {
     font-size: 1rem;
     text-align: center;
