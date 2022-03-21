@@ -22,16 +22,6 @@ h1 {
     width: 100px;
 }
 
-td {
-    display: inline-block;
-    box-sizing: border-box;
-    padding: 0 .5rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 210px;
-}
-
 a { 
     color: #F9AD45; 
     transition: color .2s ease; 
