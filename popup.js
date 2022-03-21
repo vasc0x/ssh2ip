@@ -1,18 +1,45 @@
 const btn_save_user_id = document.getElementById('save');
+
 var saved_userid = "";
+
 var txt_userid = document.getElementById('userid');
 
+// Add an event listener to the save button
 btn_save_user_id.addEventListener('click', () => {
   var new_userid = document.getElementById('userid').value;
-  
-  //alert('New userid is ' + new_userid);
+  var sync_to_google = document.getElementById('sync').checked;
 
+  // If the sync is selected, save to local storage
+  if (sync_to_google) {
+    // Save sync preference to local storage
+    chrome.storage.local.set({'sync': sync_to_google}, function() {
+      console.log('Sync is set to ' + sync_to_google);
+    });
+  }
+
+  // Save the user id to local storage
   chrome.storage.local.set({'userid': new_userid}, function() {
     console.log('User id is set to ' + new_userid);
     window.close();
   });
 });
 
+// Get the saved user id from local storage
+chrome.storage.local.get(['userid'], function(result) {
+  saved_userid = result.userid;
+
+  if (saved_userid != null) {
+    txt_userid.value = saved_userid;
+  }
+  else {
+    txt_userid.value = "";
+  }
+  
+  console.log('Stored userid is ' + saved_userid);
+  //alert('Stored userid is ' + saved_userid);
+});
+
+// Check if we are syncing to google local storage
 chrome.storage.local.get(['userid'], function(result) {
   saved_userid = result.userid;
 
