@@ -1,11 +1,14 @@
+// Save user id button
 const btn_save_user_id = document.getElementById('save');
 
 var saved_userid = "";
 
+// Input textbox containing the userid
 var txt_userid = document.getElementById('userid');
 
 // Add an event listener to the save button
 btn_save_user_id.addEventListener('click', () => {
+	// Get the userd id value from the textbox
   var new_userid = document.getElementById('userid').value;
   var sync_to_google = document.getElementById('sync').checked;
 
@@ -36,7 +39,6 @@ chrome.storage.local.get(['userid'], function(result) {
   }
   
   console.log('Stored userid is ' + saved_userid);
-  //alert('Stored userid is ' + saved_userid);
 });
 
 // Check if we are syncing to google local storage
@@ -51,5 +53,4 @@ chrome.storage.local.get(['userid'], function(result) {
   }
   
   console.log('Stored userid is ' + saved_userid);
-  //alert('Stored userid is ' + saved_userid);
 });

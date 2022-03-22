@@ -14,6 +14,7 @@ chrome.runtime.onInstalled.addListener(() => {
 var saved_userid = "";
 var newURL = "";
 
+// Add listener to contextual menu
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
 	chrome.storage.local.get(['userid'], function(result) {
 		saved_userid = result.userid;
