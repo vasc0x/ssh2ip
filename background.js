@@ -9,10 +9,33 @@ chrome.runtime.onInstalled.addListener(() => {
 	chrome.contextMenus.removeAll(function() {
 		chrome.contextMenus.create(contextMenuItem);
 	});
+
+
 });
+
+// let page = document.body.innerHTML;
+// //let ip = page.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g);
+// page = page.replace(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g, 'hi');
+// alert (page);
+
+// chrome.runtime.onMessage.addListener(function(request, sender) {
+// 	if (request.action == "getSource") {
+// 		this.pageSource = request.source;
+// 		var title = this.pageSource.match(/<title[^>]*>([^<]+)<\/title>/)[1];
+// 		alert(title)
+// 	}
+// });
+
+// chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+// 	chrome.tabs.executeScript(
+// 		tabs[0].id,
+// 		{ code: 'var s = document.documentElement.outerHTML; chrome.runtime.sendMessage({action: "getSource", source: s});' }
+// 	);
+// });
 
 var saved_userid = "";
 var newURL = "";
+var txt_userid = document.getElementById('userid'); // Input textbox containing the userid
 
 // Add listener to contextual menu
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
@@ -28,6 +51,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 			chrome.tabs.create({url: newURL})
 		}
 		else {
+			txt_userid.value = "No user id saved";
 			console.log('There is no user id stored');
 
 			newURL = "ssh://" + info.selectionText;
