@@ -33,6 +33,8 @@ chrome.runtime.onInstalled.addListener(() => {
 // 	);
 // });
 
+const CryptoJS = require('crypto-js');
+
 var saved_userid = "";
 var newURL = "";
 
