@@ -35,7 +35,6 @@ chrome.runtime.onInstalled.addListener(() => {
 
 var saved_userid = "";
 var newURL = "";
-var txt_userid = document.getElementById('userid'); // Input textbox containing the userid
 
 // Add listener to contextual menu
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
@@ -46,12 +45,11 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 		if (saved_userid != null) {
 			console.log('Value currently is ' + saved_userid);
 
-			newURL = "ssh://" + saved_userid + "@" + info.selectionText;
+			newURL = "ssh://" + saved_userid + ":5124@" + info.selectionText;
 			console.log(newURL);
 			chrome.tabs.create({url: newURL})
 		}
 		else {
-			txt_userid.value = "No user id saved";
 			console.log('There is no user id stored');
 
 			newURL = "ssh://" + info.selectionText;
