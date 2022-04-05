@@ -33,7 +33,11 @@ chrome.runtime.onInstalled.addListener(() => {
 // 	);
 // });
 
+<<<<<<< HEAD
 // const CryptoJS = require('crypto-js');
+=======
+const CryptoJS = require('crypto-js');
+>>>>>>> 244cf1e9cf27b574871e4573708b23b6c0547f3a
 
 var saved_userid = "";
 var saved_password = "";
@@ -45,6 +49,25 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 	/* Get saved user_id */
 	chrome.storage.local.get(['userid'], function(result) {
 		saved_userid = result.userid;
+<<<<<<< HEAD
+=======
+
+		// Check if we have a user id saved already
+		if (saved_userid != null) {
+			console.log('Value currently is ' + saved_userid);
+
+			newURL = "ssh://" + saved_userid + ":5124@" + info.selectionText;
+			console.log(newURL);
+			chrome.tabs.create({url: newURL})
+		}
+		else {
+			console.log('There is no user id stored');
+
+			newURL = "ssh://" + info.selectionText;
+			console.log(newURL);
+			chrome.tabs.create({url: newURL})
+		}
+>>>>>>> 244cf1e9cf27b574871e4573708b23b6c0547f3a
 	});
 
 	/* Get saved password */
