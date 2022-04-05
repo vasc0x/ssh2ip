@@ -12,8 +12,6 @@ btn_save_user_id.addEventListener('click', () => {
   var new_ssh_client = document.querySelector('input[name="ssh_client"]:checked').value;  // Get the value of the selected ssh client
   var sync_to_google = document.getElementById('sync').checked;                           // Get the sync value from the checkbox
 
-  alert(new_ssh_client);
-
   /* If the user id is set, save to local storage */
   if (new_userid) {
     chrome.storage.local.set({'userid': new_userid}, function() {
@@ -29,6 +27,14 @@ btn_save_user_id.addEventListener('click', () => {
       window.close();
     });
   }
+
+    /* Save the SSH client to local storage. Default is Putty */
+    if (new_ssh_client) {
+      chrome.storage.local.set({'ssh_client': new_ssh_client}, function() {
+        console.log('SSH client is set to ' + new_ssh_client);
+        window.close();
+      });
+    }
 });
 
 /* Get the saved user id from local storage */

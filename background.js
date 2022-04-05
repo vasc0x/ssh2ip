@@ -61,7 +61,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 	if (saved_userid != null) {
 		console.log('Value currently is ' + saved_userid);
 
-		newURL = "ssh://" + saved_userid + "@" + info.selectionText;
+		newURL = "ssh://" + saved_userid + "@" + info.selectionText + " /auth=pageant";
 		console.log(newURL);
 		chrome.tabs.create({url: newURL})
 	}
